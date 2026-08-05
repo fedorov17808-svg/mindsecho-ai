@@ -1,0 +1,56 @@
+{
+  "creditpulse ai": {
+    "id": "alzlrna",
+    "projectName": "CreditPulse AI",
+    "toneOfVoice": "Professional, Web3 Native, Visionary",
+    "targetAudience": "Web3 VCs, Creators, Animoca Ecosystem",
+    "keyInsights": [
+      "Smart contract automated risk-scoring system with on-chain attestations."
+    ],
+    "pastOutputs": [
+      {
+        "platform": "Pitch Deck Slides",
+        "content": "[MindsEcho AI Memory Context Activated]\nProject: CreditPulse AI\nTone: Professional, Tech-savvy, Visionary\n\nGenerated Content for Pitch Deck Slides:\n\n1. Concept overview based on \"Smart contract automated risk-scoring system with on-chain attestations.\"\n2. Key Value Proposition leveraging stored insights.\n3. Call-to-Action tuned for Web3 VCs, Creators, Developers.",
+        "createdAt": "2026-08-05T14:14:00.849Z"
+      },
+      {
+        "platform": "X/Twitter Thread",
+        "content": "[MindsEcho AI Memory Context Activated]\nProject: CreditPulse AI\nTone: Professional, Tech-savvy, Visionary\n\nGenerated Content for X/Twitter Thread:\n\n1. Concept overview based on \"Smart contract automated risk-scoring system with on-chain attestations.\"\n2. Key Value Proposition leveraging stored insights.\n3. Call-to-Action tuned for Web3 VCs, Creators, Developers.",
+        "createdAt": "2026-08-05T14:14:00.849Z"
+      },
+      {
+        "platform": "Telegram Post",
+        "content": "[MindsEcho AI Memory Context Activated]\nProject: CreditPulse AI\nTone: Professional, Tech-savvy, Visionary\n\nGenerated Content for Telegram Post:\n\n1. Concept overview based on \"Smart contract automated risk-scoring system with on-chain attestations.\"\n2. Key Value Proposition leveraging stored insights.\n3. Call-to-Action tuned for Web3 VCs, Creators, Developers.",
+        "createdAt": "2026-08-05T14:14:00.849Z"
+      }
+    ],
+    "updatedAt": "2026-08-05T15:25:23.188Z"
+  },
+  "mindsecho agent": {
+    "id": "v0vevky",
+    "projectName": "MindsEcho Agent",
+    "toneOfVoice": "Innovative, Tech-Savvy, Creator-First",
+    "targetAudience": "The Sandbox Creators, Animoca Brands, Web3 Community",
+    "keyInsights": [
+      "Autonomous AI agent with persistent context memory for cross-platform creator workflows."
+    ],
+    "pastOutputs": [
+      {
+        "platform": "Pitch Deck Slides",
+        "content": "[MindsEcho AI Memory Context Activated]\nProject: MindsEcho Agent\nTone: Innovative, Tech-Savvy, Creator-First\n\nGenerated Content for Pitch Deck Slides:\n\n1. Concept overview based on \"Autonomous AI agent with persistent context memory for cross-platform creator workflows.\"\n2. Key Value Proposition leveraging stored insights.\n3. Call-to-Action tuned for The Sandbox Creators, Animoca Brands, Web3 Community.",
+        "createdAt": "2026-08-05T15:24:21.726Z"
+      },
+      {
+        "platform": "X/Twitter Thread",
+        "content": "[MindsEcho AI Memory Context Activated]\nProject: MindsEcho Agent\nTone: Innovative, Tech-Savvy, Creator-First\n\nGenerated Content for X/Twitter Thread:\n\n1. Concept overview based on \"Autonomous AI agent with persistent context memory for cross-platform creator workflows.\"\n2. Key Value Proposition leveraging stored insights.\n3. Call-to-Action tuned for The Sandbox Creators, Animoca Brands, Web3 Community.",
+        "createdAt": "2026-08-05T15:24:21.726Z"
+      },
+      {
+        "platform": "Telegram Post",
+        "content": "[MindsEcho AI Memory Context Activated]\nProject: MindsEcho Agent\nTone: Innovative, Tech-Savvy, Creator-First\n\nGenerated Content for Telegram Post:\n\n1. Concept overview based on \"Autonomous AI agent with persistent context memory for cross-platform creator workflows.\"\n2. Key Value Proposition leveraging stored insights.\n3. Call-to-Action tuned for The Sandbox Creators, Animoca Brands, Web3 Community.",
+        "createdAt": "2026-08-05T15:24:21.726Z"
+      }
+    ],
+    "updatedAt": "2026-08-05T15:24:21.726Z"
+  }
+}
