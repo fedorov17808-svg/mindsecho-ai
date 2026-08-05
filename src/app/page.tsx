@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Sparkles, Brain, Layers, Share2, CheckCircle2, RefreshCw, ChevronLeft, ChevronRight, Zap, Database, Server, Cpu, Globe } from 'lucide-react';
+import { useState } from 'react';
+import { Sparkles, Brain, Layers, Share2, CheckCircle2, RefreshCw, ChevronLeft, ChevronRight, Zap, Database, Server, Cpu, Globe, Send } from 'lucide-react';
 
 export default function Home() {
   const [projectName, setProjectName] = useState('MindsEcho Agent');
@@ -11,31 +11,70 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
 
-  // Hardcoded structure directly in JSX to prevent state/cache loss
-  const slides = [
-    { title: '1. Vision & Problem', content: 'Creators in Web3 suffer from context loss across platforms.\nMindsEcho locks 10 PB of project context in long-term AI memory.' },
-    { title: '2. The Solution', content: 'Autonomous Agent Engine that continuously updates pitch decks,\nTwitter threads, and Telegram announcements in real-time.' },
-    { title: '3. Animoca Ecosystem Fit', content: 'Seamlessly integrates with Sandbox creators, Web3 VCs, and Decentralized Identity.' }
-  ];
+  // Dynamic state based on user inputs
+  const [activeData, setActiveData] = useState({
+    projectName: 'MindsEcho Agent',
+    tone: 'Innovative',
+    slides: [
+      { title: '1. Vision & Problem', content: 'Creators in Web3 suffer from context loss across platforms.\nMindsEcho locks 10 PB of project context in long-term AI memory.' },
+      { title: '2. The Solution', content: 'Autonomous Agent Engine that continuously updates pitch decks,\nTwitter threads, and Telegram announcements in real-time.' },
+      { title: '3. Ecosystem Integration', content: 'Seamlessly integrates with Web3 creators, VCs, and Decentralized Identity.' }
+    ],
+    tweets: [
+      '1/ Introducing MindsEcho AI 🚀 - The Petascale Context Engine for Web3 Creators.',
+      '2/ Powered by 10,000 TB distributed vector shards with 1.8ms retrieval latency.',
+      '3/ Never repeat your project pitch again. Built for global ecosystem #MindsJam'
+    ],
+    telegram: '📢 **MindsEcho AI Update**\n\nPetascale Knowledge Graph successfully synced! Multi-platform context outputs regenerated in real-time.'
+  });
 
-  const tweets = [
-    '1/ Introducing MindsEcho AI 🚀 - The Petascale Context Engine for Web3 Creators.',
-    '2/ Powered by 10,000 TB distributed vector shards with 1.8ms retrieval latency.',
-    '3/ Never repeat your project pitch again. Built for @AnimocaBrands ecosystem #MindsJam'
-  ];
+  const handleUpdate = () => {
+    setLoading(true);
+    setTimeout(() => {
+      const mainTone = toneOfVoice.split(',')[0].trim() || 'Custom';
+      setActiveData({
+        projectName: projectName || 'MindsEcho Agent',
+        tone: mainTone,
+        slides: [
+          { 
+            title: `1. Vision & Core Problem`, 
+            content: `Targeting ${targetAudience}.\nChallenge: Fragmented context across platforms.` 
+          },
+          { 
+            title: `2. ${projectName || 'MindsEcho'} Solution`, 
+            content: `${inputPrompt}\n\nMaintains continuous 10 PB vector graph memory.` 
+          },
+          { 
+            title: `3. Go-To-Market & Ecosystem`, 
+            content: `Tailored tone: ${toneOfVoice}.\nAutomatically syncs deck, X thread & Telegram.` 
+          }
+        ],
+        tweets: [
+          `1/ Meet ${projectName || 'MindsEcho AI'} 🚀 - ${inputPrompt.slice(0, 80)}...`,
+          `2/ Tone: ${toneOfVoice} | Audience: ${targetAudience}.`,
+          `3/ Dynamic petascale vector memory indexed with 1.8ms latency. #Web3 #AI`
+        ],
+        telegram: `📢 **${projectName || 'MindsEcho AI'} Update**\n\nCore Insight Updated:\n"${inputPrompt}"\n\n🎯 Target Audience: ${targetAudience}\n⚡ Status: Vector Graph Synced (10 PB)`
+      });
+      setLoading(false);
+    }, 500);
+  };
 
-  useEffect(() => {
-    localStorage.clear();
-  }, []);
+  const handlePreset = () => {
+    setProjectName('MindsEcho Agent');
+    setToneOfVoice('Innovative, Tech-Savvy, Creator-First');
+    setTargetAudience('The Sandbox Creators, Animoca Brands, Web3 Community');
+    setInputPrompt('Autonomous AI agent with persistent context memory for cross-platform creator workflows.');
+    handleUpdate();
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setTimeout(() => setLoading(false), 400);
+    handleUpdate();
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-6 font-sans">
+    <div className="max-w-7xl mx-auto px-4 py-6 font-sans text-slate-100">
       <header className="flex flex-wrap justify-between items-center border-b border-slate-800 pb-5 mb-6 gap-4">
         <div className="flex items-center gap-3">
           <div className="p-3 bg-gradient-to-br from-purple-600 via-pink-600 to-cyan-400 rounded-xl text-white shadow-lg">
@@ -55,6 +94,13 @@ export default function Home() {
         </div>
 
         <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={handlePreset}
+            className="px-3.5 py-1.5 bg-gradient-to-r from-amber-500/20 to-orange-500/20 hover:from-amber-500/30 hover:to-orange-500/30 text-amber-300 text-xs font-semibold rounded-xl border border-amber-500/40 flex items-center gap-1.5 cursor-pointer shadow-md transition-all"
+          >
+            <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" /> Load Animoca Preset
+          </button>
           <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-950/80 border border-emerald-700/60 rounded-full text-xs text-emerald-300 font-medium">
             <CheckCircle2 className="w-4 h-4 text-emerald-400" /> 10 PB Memory Active
           </div>
@@ -74,7 +120,7 @@ export default function Home() {
                   type="text"
                   value={projectName}
                   onChange={(e) => setProjectName(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:border-purple-500 outline-none transition-all"
                 />
               </div>
 
@@ -84,7 +130,7 @@ export default function Home() {
                   type="text"
                   value={toneOfVoice}
                   onChange={(e) => setToneOfVoice(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:border-purple-500 outline-none transition-all"
                 />
               </div>
 
@@ -94,27 +140,27 @@ export default function Home() {
                   type="text"
                   value={targetAudience}
                   onChange={(e) => setTargetAudience(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:border-purple-500 outline-none transition-all"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-semibold text-slate-400 mb-1 uppercase">New Core Insight</label>
+                <label className="block text-[11px] font-semibold text-slate-400 mb-1 uppercase">New Core Insight / Update</label>
                 <textarea
                   rows={3}
                   value={inputPrompt}
                   onChange={(e) => setInputPrompt(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-200 focus:border-purple-500 outline-none transition-all"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg text-xs uppercase cursor-pointer"
+                className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg text-xs uppercase cursor-pointer active:scale-[0.99] transition-all"
               >
                 {loading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Brain className="w-4 h-4" />}
-                {loading ? 'Re-indexing Shards...' : 'Update Knowledge Graph'}
+                {loading ? 'Re-indexing Knowledge Graph...' : 'Update Knowledge Graph'}
               </button>
             </form>
           </div>
@@ -152,11 +198,11 @@ export default function Home() {
             <div className="flex flex-wrap gap-2">
               <span className="px-2.5 py-1 text-[11px] font-medium bg-cyan-950/90 border border-cyan-700/60 text-cyan-200 rounded-md flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
-                <span className="text-slate-400">Project:</span> {projectName}
+                <span className="text-slate-400">Project:</span> {activeData.projectName}
               </span>
               <span className="px-2.5 py-1 text-[11px] font-medium bg-purple-950/90 border border-purple-700/60 text-purple-200 rounded-md flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-ping" />
-                <span className="text-slate-400">Tone:</span> {toneOfVoice.split(',')[0]}
+                <span className="text-slate-400">Tone:</span> {activeData.tone}
               </span>
               <span className="px-2.5 py-1 text-[11px] font-bold bg-purple-900/40 border border-purple-500/40 text-purple-300 rounded-md">
                 +10 PB Vector Shards Linked
@@ -165,23 +211,28 @@ export default function Home() {
           </div>
 
           {/* Interactive Pitch Deck */}
-          <div className="bg-gradient-to-b from-slate-900 to-slate-950 border border-indigo-900/50 rounded-2xl p-5 shadow-2xl">
+          <div className="bg-gradient-to-b from-slate-900 to-slate-950 border border-indigo-900/50 rounded-2xl p-5 shadow-2xl relative">
+            {loading && (
+              <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-xs rounded-2xl flex items-center justify-center z-10">
+                <RefreshCw className="w-6 h-6 text-cyan-400 animate-spin" />
+              </div>
+            )}
             <div className="flex justify-between items-center mb-3">
               <span className="text-xs font-bold text-indigo-400 uppercase flex items-center gap-2">
                 <Layers className="w-4 h-4" /> Interactive Pitch Deck Preview
               </span>
               <span className="text-xs text-slate-400 font-mono">
-                Slide {activeSlide + 1} of {slides.length}
+                Slide {activeSlide + 1} of {activeData.slides.length}
               </span>
             </div>
 
             <div className="bg-slate-950 border border-slate-800 rounded-xl p-5 min-h-[120px] flex flex-col justify-between mb-3">
               <div>
                 <h4 className="text-base font-bold text-slate-100 mb-2">
-                  {slides[activeSlide].title}
+                  {activeData.slides[activeSlide]?.title}
                 </h4>
                 <p className="text-xs text-slate-300 whitespace-pre-wrap leading-relaxed">
-                  {slides[activeSlide].content}
+                  {activeData.slides[activeSlide]?.content}
                 </p>
               </div>
             </div>
@@ -191,41 +242,55 @@ export default function Home() {
                 type="button"
                 disabled={activeSlide === 0}
                 onClick={() => setActiveSlide((prev) => Math.max(0, prev - 1))}
-                className="p-1.5 bg-slate-800 hover:bg-slate-700 disabled:opacity-30 rounded-lg text-slate-200"
+                className="p-1.5 bg-slate-800 hover:bg-slate-700 disabled:opacity-30 rounded-lg text-slate-200 cursor-pointer"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <div className="flex gap-1.5">
-                {slides.map((_, idx) => (
+                {activeData.slides.map((_, idx) => (
                   <div key={idx} className={`h-1.5 rounded-full transition-all ${idx === activeSlide ? 'w-6 bg-cyan-400' : 'w-1.5 bg-slate-800'}`} />
                 ))}
               </div>
               <button
                 type="button"
-                disabled={activeSlide === slides.length - 1}
-                onClick={() => setActiveSlide((prev) => Math.min(slides.length - 1, prev + 1))}
-                className="p-1.5 bg-slate-800 hover:bg-slate-700 disabled:opacity-30 rounded-lg text-slate-200"
+                disabled={activeSlide === activeData.slides.length - 1}
+                onClick={() => setActiveSlide((prev) => Math.min(activeData.slides.length - 1, prev + 1))}
+                className="p-1.5 bg-slate-800 hover:bg-slate-700 disabled:opacity-30 rounded-lg text-slate-200 cursor-pointer"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
           </div>
 
-          {/* Social Posts */}
-          <div className="space-y-3">
+          {/* Social Posts (Twitter + Telegram) */}
+          <div className="space-y-4">
             <h3 className="text-xs font-bold text-slate-300 uppercase flex items-center gap-2">
               <Share2 className="w-4 h-4 text-indigo-400" /> Multi-Platform Generated Outputs
             </h3>
+            
+            {/* Twitter Section */}
             <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-4">
               <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold bg-indigo-950 text-indigo-300 border border-indigo-800/50 rounded-md mb-2">
                 X / Twitter Thread
               </span>
               <div className="space-y-2">
-                {tweets.map((tweet, tIdx) => (
+                {activeData.tweets.map((tweet, tIdx) => (
                   <p key={tIdx} className="text-xs text-slate-300 bg-slate-950 p-2.5 rounded-lg border border-slate-800/60 leading-relaxed">
                     {tweet}
                   </p>
                 ))}
+              </div>
+            </div>
+
+            {/* Telegram Section */}
+            <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-4">
+              <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold bg-sky-950 text-sky-300 border border-sky-800/50 rounded-md mb-2 flex items-center gap-1.5 w-max">
+                <Send className="w-3 h-3 text-sky-400" /> Telegram Channel Announcement
+              </span>
+              <div className="bg-slate-950 p-3 rounded-lg border border-slate-800/60">
+                <p className="text-xs text-slate-300 whitespace-pre-wrap leading-relaxed">
+                  {activeData.telegram}
+                </p>
               </div>
             </div>
           </div>

@@ -6,6 +6,14 @@ MindsEcho AI locks **10,000 TB (10 PB)** of project context into a distributed v
 
 ---
 
+## 📸 Interface Preview
+
+![MindsEcho AI Dashboard](./preview1.png)
+
+![Multi-Platform Outputs](./preview2.png)
+
+---
+
 ## 🚀 Key Features
 
 * **Petascale Vector Engine**: Keeps long-term context memory synchronized across platforms.
@@ -26,5 +34,5 @@ MindsEcho AI locks **10,000 TB (10 PB)** of project context into a distributed v
 
 ## 🔗 Links
 
-* **Live Demo**: https://mindsecho-ai.vercel.app
+* **Live Demo**: [mindsecho-ai.vercel.app](https://mindsecho-ai.vercel.app)
 * **Hackathon**: Animoca Minds Jam #1
