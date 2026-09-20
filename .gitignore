@@ -1,1 +1,13 @@
-.vercel
+node_modules/
+.next/
+.vercel/
+out/
+build/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+.DS_Store
+*.log

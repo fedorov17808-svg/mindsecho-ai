@@ -1,0 +1,7 @@
+Meet MindsEcho AI, an autonomous long-term context memory engine, built for Web3 creators and the Animoca ecosystem.
+
+Simply input strategic updates, or load presets. In milliseconds, the petascale vector knowledge graph re-indexes all stored project context.
+
+It automatically updates the interactive pitch deck, keeping key narrative slides aligned with your vision.
+
+And instantly generates multi-platform outputs, like Twitter threads and Telegram announcements, eliminating context loss forever.
